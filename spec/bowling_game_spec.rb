@@ -13,4 +13,9 @@ describe BowlingGame do
     game.rolls([4,6,5] + [1]*17)
     expect(game.score).to eq(37)
   end
+
+  it "scores a strike" do
+    game.rolls([10,3,5] + [1]*17)
+    expect(game.score).to eq(42)
+  end
 end
