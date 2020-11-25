@@ -14,13 +14,13 @@ class BowlingGame
 
     while frame < 10
       if spare?
-        score += 10 + @rolls[@first_in_frame + 2]
+        score += calculate_spare
         @first_in_frame += 2
       elsif strike?
-        score += 10 + @rolls[@first_in_frame + 1] + @rolls[@first_in_frame + 2]
+        score += calculate_strike
         @first_in_frame += 1
       else
-        score += @rolls[@first_in_frame] + @rolls[@first_in_frame + 1]
+        score += calculate_standard
         @first_in_frame += 2
       end
 
@@ -33,11 +33,24 @@ class BowlingGame
   private
 
   def spare?
+    return false if @rolls[@first_in_frame] == 10
     @rolls[@first_in_frame] + @rolls[@first_in_frame + 1] == 10
   end
 
   def strike?
     @rolls[@first_in_frame] == 10
+  end
+
+  def calculate_spare
+    10 + @rolls[@first_in_frame + 2]
+  end
+
+  def calculate_strike
+    10 + @rolls[@first_in_frame + 1] + @rolls[@first_in_frame + 2]
+  end
+
+  def calculate_standard
+    @rolls[@first_in_frame] + @rolls[@first_in_frame + 1]
   end
 
 end
