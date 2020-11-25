@@ -18,4 +18,9 @@ describe BowlingGame do
     game.rolls([10,3,5] + [1]*17)
     expect(game.score).to eq(42)
   end
+
+  it "scores a perfect game" do
+    game.rolls([10]*12)
+    expect(game.score).to eq(300)
+  end
 end
