@@ -1,13 +1,13 @@
 class BowlingGame
 
-  attr_reader :score
+  attr_reader :rolls
 
   def rolls(rolls)
-    @score = rolls.inject(:+)
+    @rolls = rolls
   end
 
   def score
-    @score
+    @rolls.inject(:+)
   end
 
 end
